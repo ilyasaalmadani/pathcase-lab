@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pathcase-lab"
+version = "0.1.0"
+description = "Audit portable filename hazards and probe actual filesystem name behavior"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+authors = [{name = "Ilyas Akbar Almadani"}]
+keywords = ["filesystem", "unicode", "portability", "developer-tools", "cli"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Topic :: Software Development :: Testing",
+]
+
+[project.scripts]
+pathcase = "pathcase_lab.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
