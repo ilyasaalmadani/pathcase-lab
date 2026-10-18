@@ -30,7 +30,8 @@ class ErrorPathTests(unittest.TestCase):
             # make parent unwritable
             parent.chmod(0)
             try:
-                with self.assertRaises(ValueError):
+                # TemporaryDirectory creation will raise PermissionError when parent is unwritable
+                with self.assertRaises(PermissionError):
                     probe_filesystem(parent)
             finally:
                 parent.chmod(0o700)
