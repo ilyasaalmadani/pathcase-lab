@@ -52,6 +52,10 @@ pathcase probe --parent /path/on/the/volume --json
 
 Run the probe on each filesystem you care about: a Mac startup disk, an external disk, a Linux CI runner, or a Windows checkout may give different answers.
 
+## Where this fits
+
+[Pathologize](https://github.com/spf13/pathologize) is a library for rewriting names into safer forms. [unicode-filename-tester](https://github.com/nmiyake/unicode-filename-tester) is a focused APFS experiment. `pathcase-lab` combines a read-only tree audit with a disposable probe of the actual target volume and emits versioned JSON for CI or cross-machine comparison. It does not rename files or assume all volumes on one OS behave alike.
+
 ## JSON and exit codes
 
 Both commands produce schema version `1` JSON with `--json`. `audit` returns `0` for no findings, `1` for findings, and `2` for invalid input or incomplete scanning. `probe` returns `0` after a completed probe and `2` when it cannot start. An `unsupported` probe case is an observed result, not a CLI failure.
